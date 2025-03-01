@@ -1,7 +1,7 @@
 import path from 'path';
 import glob from 'glob';
 import dirGlob from 'dir-glob';
-import * as _ from 'lodash';
+import { concat } from 'lodash';
 
 class PathUtils {
     public static resolvePath(filePath: string): string {
@@ -18,7 +18,7 @@ class PathUtils {
             const filesPathList: string[] = glob.sync(path, {
                 ignore: correctIgnorePath,
             });
-            acum = _.concat(acum, filesPathList);
+            acum = concat(acum, filesPathList);
             return acum;
         }, []);
         return result.map((filePath: string) => {

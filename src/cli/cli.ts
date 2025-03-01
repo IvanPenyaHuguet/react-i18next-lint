@@ -14,7 +14,7 @@ import {
 } from "./../core";
 
 import { config } from './../core/config';
-import { OptionsLongNames, OptionsShortNames } from './enums';
+import { OptionsLongNames } from './enums';
 import chalk from 'chalk';
 import { parseJsonFile, getPackageJsonPath } from './utils';
 
