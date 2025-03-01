@@ -9,23 +9,19 @@
     "bin": {
         "react-i18next-lint": "dist/bin.js"
     },
+    "types": "dist/src/core/index.d.ts",
     "main": "dist/src/core/index.js",
     "scripts": {
-        "tsc": "./node_modules/.bin/tsc",
-        "markdownlint": "./node_modules/.bin/markdownlint",
         "tslint": "./node_modules/.bin/tslint",
-        "doc:cli": "typedoc --mode modules --excludePrivate --excludeProtected --out ./docs/cli/ ./src/cli/",
-        "doc:core": "typedoc --mode modules --excludePrivate --excludeProtected --out ./docs/core/ ./src/core/",
-        "doc": "npm run doc:core && npm run doc:cli",
+        "build": "tsc -p .",
+        "lint": "npm run lint:typescript && npm run lint:markdown",
         "lint:typescript": "tslint -c tslint.json --project . -t codeFrame",
         "lint:markdown": "markdownlint --config ./config/markdownlint.json ./docs/**/*.md",
-        "test:unit": "nyc mocha -r ts-node/register ./test/unit/*.test.ts",
-        "test:integration": "mocha -r ts-node/register ./test/integration/*.test.ts",
-        "build": "tsc -p . && gulp -f ./config/gulp.js",
-        "lint": "npm run lint:typescript && npm run lint:markdown",
         "test": "npm run test:integration",
+        "test:unit": "",
+        "test:integration": "mocha -r ts-node/register ./test/integration/*.test.ts",
         "pre:release": "npm run lint && npm run build",
-        "semantic-release": "env-cmd semantic-release --no-ci",
+        "semantic-release": "",
         "self-lint": "npx react-i18next-lint -p ./test/integration/inputs/views/*.{html,ts,js} -l ./test/integration/inputs/locales/*.json -i ./test/integration/inputs/locales/incorrect.json"
     },
     "files": [
@@ -87,8 +83,6 @@
         "string-similarity": "^4.0.1"
     },
     "devDependencies": {
-        "@semantic-release/changelog": "^3.0.2",
-        "@semantic-release/git": "^7.0.8",
         "@types/chai": "^4.1.7",
         "@types/chalk": "^2.2.0",
         "@types/commander": "^2.12.2",
@@ -96,22 +90,15 @@
         "@types/glob": "^7.1.1",
         "@types/lodash": "^4.14.132",
         "@types/mocha": "^5.2.6",
-        "@types/node": "^12.0.2",
-        "@types/sinon": "^7.0.11",
+        "@types/node": "^20.17.22",
         "@types/string-similarity": "^3.0.0",
         "chai": "^4.2.0",
         "env-cmd": "^10.1.0",
-        "gulp": "^4.0.2",
-        "gulp-copy": "^4.0.1",
-        "husky": "^2.3.0",
         "markdownlint-cli": "^0.16.0",
         "mocha": "^8.2.1",
         "nyc": "^14.1.1",
-        "semantic-release": "^17.3.7",
-        "sinon": "^7.3.2",
         "ts-node": "^10.6.0",
         "tslint": "^5.11.0",
-        "typedoc": "^0.15.0",
         "typescript": "^4.1.2"
     }
 }
