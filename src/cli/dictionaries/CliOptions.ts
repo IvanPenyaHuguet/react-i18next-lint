@@ -99,20 +99,6 @@ const cliOptions: OptionModel[] = [
         ]
     }),
     new OptionModel({
-        shortName: OptionsShortNames.misprintKeys,
-        longName: OptionsLongNames.misprintKeys,
-        required: false,
-        type: ArgumentTypes.enum,
-        description: `Try to find matches with misprint keys on views and languages keys. Coefficient: 0.9. Can be longer process!!`,
-        additionalDescription: ``,
-        default: ErrorTypes.disable,
-        values: [
-            ErrorTypes.disable,
-            ErrorTypes.warning,
-            ErrorTypes.error
-        ]
-    }),
-    new OptionModel({
         shortName: OptionsShortNames.deepSearch,
         longName: OptionsLongNames.deepSearch,
         required: false,
@@ -124,15 +110,6 @@ const cliOptions: OptionModel[] = [
             ToggleRule.disable,
             ToggleRule.enable,
         ]
-    }),
-    new OptionModel({
-        longName: OptionsLongNames.misprintCoefficient,
-        shortName: OptionsShortNames.misprintCoefficient,
-        required: false,
-        type: ArgumentTypes.number,
-        description: `Coefficient for misprint option can be from 0 to 1.0.`,
-        additionalDescription: ``,
-        default: config.defaultValues.rules.misprintCoefficient.toString(),
     }),
     new OptionModel({
         longName: OptionsLongNames.config,

@@ -8,11 +8,8 @@ const config: IAppConfig = {
             keysOnViews: ErrorTypes.error,
             emptyKeys: ErrorTypes.warning,
             deepSearch: ToggleRule.disable,
-            misprintKeys: ErrorTypes.disable,
             maxWarning: 0,
-            misprintCoefficient: 0.9,
             ignoredKeys: [],
-            ignoredMisprintKeys: [],
             customRegExpToFindKeys: []
         },
         projectPath: './src/**/*.{html,ts,resx,js}',

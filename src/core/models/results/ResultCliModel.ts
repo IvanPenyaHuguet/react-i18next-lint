@@ -35,16 +35,6 @@ class ResultCliModel {
         return result;
     }
 
-    public countMisprint(): number {
-        const misprintCount: number = (this.errors.filter((item: ResultErrorModel) => item.errorFlow === ErrorFlow.misprintKeys) || []).length;
-        return misprintCount;
-    }
-
-    public hasMisprint(): boolean {
-        const result: boolean = this.countMisprint() > 0;
-        return result;
-    }
-
     public getEmptyKeys(): ResultErrorModel[] {
         const result: ResultErrorModel[] = (this.errors.filter((item: ResultErrorModel) => item.errorFlow === ErrorFlow.emptyKeys) || []);
         return result;

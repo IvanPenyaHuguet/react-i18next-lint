@@ -3,12 +3,7 @@
     "keysOnViews": "error",
     "zombieKeys": "warning",
     "emptyKeys": "warning",
-    "misprint": {
-      "type": "warning",
-      "coefficient": 0.9
-    },
-    "ignoredKeys": [],
-    "ignoredMisprintKeys": []
+    "ignoredKeys": []
   },
   "projectPath": "./src/**/*.{html,ts,js}",
   "languagesPath": "./src/assets/i18n/*.json"

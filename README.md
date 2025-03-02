@@ -90,17 +90,10 @@ Options:
           Max count of warnings in all files. If this value more that count of warnings, then an error is return
           Possible Values: <number>
            (default: "0")
-  -mk,  --misprintKeys [enum]
-          Try to find matches with misprint keys on views and languages keys. CCan be longer process!!
-          Possible Values: <disable|warning|error>
-           (default: "disable")
   -ds,  --deepSearch [enum]
           Add each translate key to global regexp end try to find them on project. Can be longer process!!
           Possible Values: <disable|enable>
            (default: "disable")
-  -mc, --misprintCoefficient [number]
-          Coefficient for misprint option can be from 0 to 1.0.
-          (default: "0.9")
   -c, --config [path]
           Path to the config file.
 
@@ -125,13 +118,10 @@ Default Config is:
     "rules": {
         "keysOnViews": "error",
         "zombieKeys": "warning",
-        "misprintKeys": "disable",
         "deepSearch": "disable",
         "emptyKeys": "warning",
         "maxWarning": "0",
-        "misprintCoefficient": "0.9",
         "ignoredKeys": [ "IGNORED.KEY.(.*)" ], // can be string or RegExp
-        "ignoredMisprintKeys": [],
         "customRegExpToFindKeys": [ "(?<=marker\\(['\"])([A-Za-z0-9_\\-.]+)(?=['\"]\\))"], // to find: marker('TRSNLATE.KEY');
     },
     "project": "./src/app/**/*.{html,ts,js}",
@@ -182,13 +172,10 @@ const ignoredLanguagesPath: string = "./src/assets/i18n/ru.json, ./src/assets/i1
 const ruleConfig: IRulesConfig = {
         keysOnViews: ErrorTypes.error,
         zombieKeys: ErrorTypes.warning,
-        misprintKeys: ErrorTypes.disable,
         deepSearch: ToggleRule.disable,
         emptyKeys: ErrorTypes.warning,
         maxWarning: 0,
-        misprintCoefficient: 0.9,
         ignoredKeys: [ 'EXAMPLE.KEY', 'IGNORED.KEY.(.*)' ], // can be string or RegExp
-        ignoredMisprintKeys: [],
         customRegExpToFindKeys: [ "(?<=marker\\(['\"])([A-Za-z0-9_\\-.]+)(?=['\"]\\))" ] // to find: marker('TRSNLATE.KEY');
 };
 

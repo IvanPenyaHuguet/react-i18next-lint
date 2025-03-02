@@ -37,12 +37,6 @@ class ResultErrorModel implements IValidationMessage  {
             case ErrorFlow.zombieKeys:
                 message = `Key: '${this.value}' doesn't exist in project'`;
                 break;
-            case ErrorFlow.misprintKeys:
-               message = this.suggestions.reduce((accum: string[], item: string) => {
-                   accum.push(`Possible match: '${item}' for key '${this.value}'`);
-                   return accum;
-                }, []);
-                break;
             case ErrorFlow.emptyKeys:
                 message = `Key: '${this.value}' is empty in ${this.currentPath}`;
                 break;

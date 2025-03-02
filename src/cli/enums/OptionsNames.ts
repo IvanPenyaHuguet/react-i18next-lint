@@ -10,8 +10,6 @@ enum OptionsLongNames {
     deepSearch = 'deepSearch',
     zombieKeys  = 'zombieKeys',
     keysOnViews = 'keysOnViews',
-    misprintKeys = 'misprintKeys',
-    misprintCoefficient = 'misprintCoefficient',
 }
 
 enum OptionsShortNames {
@@ -24,8 +22,6 @@ enum OptionsShortNames {
     deepSearch = 'ds',
     zombieKeys = 'zk',
     keysOnViews = 'kv',
-    misprintKeys = 'mk',
-    misprintCoefficient = 'mc',
 }
 
 export { OptionsLongNames, OptionsShortNames };

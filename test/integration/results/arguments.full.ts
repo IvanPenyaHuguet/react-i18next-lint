@@ -61,31 +61,7 @@ const assertFullModel: ResultErrorModel[]= [
         [
             'EN-us.json'
         ]
-    ),
-    new ResultErrorModel(
-        'STRING.KEY_FROM_DIRECTIVE_VIEW.EXIST_IN_ONE_LOCALE',
-        ErrorFlow.misprintKeys, ErrorTypes.warning,
-        getAbsolutePath(projectFolder, 'directive.keys.html'),
-        [
-            'EN-us.json'
-        ],
-        [
-            "STRING.KEY_FROM_DIRECTIVE_VIEW.EXIST_IN_ALL_LOCALES"
-        ]
-    ),
-
-    new ResultErrorModel(
-        'STRING.KEY_FROM_DIRECTIVE_INSIDE_TAG_VIEW.EXIST_IN_ONE_LOCALE',
-        ErrorFlow.misprintKeys, ErrorTypes.warning,
-        getAbsolutePath(projectFolder, 'directive.keys.html'),
-        [
-            'EN-us.json'
-        ],
-        [
-            "STRING.KEY_FROM_DIRECTIVE_INSIDE_TAG_VIEW.EXIST_IN_ALL_LOCALES"
-        ]
-    ),
-
+    )
 ];
 
 export { assertFullModel };

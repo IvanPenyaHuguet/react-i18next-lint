@@ -6,7 +6,7 @@ import { ErrorTypes } from './enums';
 import { IRulesConfig } from './interface';
 import { KeysUtils } from './utils';
 import { FileLanguageModel, FileViewModel, KeyModel, LanguagesModel, ResultCliModel, ResultErrorModel } from './models';
-import { AbsentViewKeysRule, MisprintRule, ZombieRule, EmptyKeysRule } from './rules';
+import { AbsentViewKeysRule, ZombieRule, EmptyKeysRule } from './rules';
 import { KeyModelWithLanguages, LanguagesModelWithKey, ViewModelWithKey } from './models/KeyModelWithLanguages';
 
 
@@ -52,7 +52,6 @@ class ReactI18nextLint {
         if (
             this.rules.zombieKeys !== ErrorTypes.disable ||
             this.rules.keysOnViews !== ErrorTypes.disable ||
-            this.rules.misprintKeys !== ErrorTypes.disable ||
             this.rules.emptyKeys !== ErrorTypes.disable
         ) {
             const regExpResult: ResultErrorModel[] = this.runRegExp(views, languagesKeys);
@@ -174,12 +173,6 @@ class ReactI18nextLint {
         if (rules.keysOnViews !== ErrorTypes.disable) {
             const ruleInstance: AbsentViewKeysRule = new AbsentViewKeysRule(this.rules.keysOnViews, languagesKeys.files);
             const ruleResult: ResultErrorModel[] = ruleInstance.check(views.keys, languagesKeys.keys);
-            result.push(...ruleResult);
-        }
-
-        if (rules.misprintKeys !== ErrorTypes.disable) {
-            const ruleInstance: MisprintRule = new MisprintRule(this.rules.misprintKeys, this.rules.misprintCoefficient, this.rules.ignoredMisprintKeys);
-            const ruleResult: ResultErrorModel[] = ruleInstance.check(result, languagesKeys.keys);
             result.push(...ruleResult);
         }
 

@@ -9,8 +9,6 @@ enum ErrorFlow {
     maxWarning = 'maxWarning',
     zombieKeys = 'zombieKeys',
     keysOnViews = 'keysOnViews',
-    misprintKeys = 'misprintKeys',
-    misprintCoefficient = 'misprintCoefficient',
 }
 
 export { ErrorFlow };

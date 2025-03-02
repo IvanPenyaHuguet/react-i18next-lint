@@ -83,39 +83,30 @@ class Cli {
 
             let deepSearch: ToggleRule;
             let optionIgnore: string;
-            let optionMisprint: ErrorTypes;
             let optionEmptyKey: ErrorTypes;
             let optionViewsRule: ErrorTypes;
             let optionMaxWarning: number ;
             let optionZombiesRule: ErrorTypes;
             let optionIgnoredKeys: string[];
-            let optionMisprintCoefficient: number ;
-            let optionIgnoredMisprintKeys: string[];
             let optionCustomRegExpToFindKeys: string[] | RegExp[];
 
             if (!!options.rules) {
                  deepSearch = options.rules.deepSearch;
                  optionIgnore = options.rules.ignore;
-                 optionMisprint = options.rules.misprintKeys;
                  optionEmptyKey = options.rules.emptyKeys;
                  optionViewsRule =  options.rules.keysOnViews;
                  optionMaxWarning =  options.rules.maxWarning;
                  optionZombiesRule = options.rules.zombieKeys;
                  optionIgnoredKeys =  options.rules.ignoredKeys;
-                 optionMisprintCoefficient = options.rules.misprintCoefficient;
-                 optionIgnoredMisprintKeys =  options.rules.ignoredMisprintKeys;
                  optionCustomRegExpToFindKeys = options.rules.customRegExpToFindKeys;
             } else {
                  deepSearch = options.deepSearch;
                  optionIgnore = options.ignore;
-                 optionMisprint = options.misprintKeys;
                  optionEmptyKey = options.emptyKeys;
                  optionViewsRule = options.keysOnViews;
                  optionMaxWarning =  options.maxWarning;
                  optionZombiesRule = options.zombieKeys;
                  optionIgnoredKeys = options.ignoredKeys;
-                 optionMisprintCoefficient = options.misprintCoefficient ;
-                 optionIgnoredMisprintKeys = options.ignoredMisprintKeys ;
                  optionCustomRegExpToFindKeys = options.customRegExpToFindKeys;
             }
 
@@ -125,8 +116,8 @@ class Cli {
             if (options.project && options.languages) {
                 this.runLint(
                     projectPath, languagePath, optionZombiesRule,
-                    optionViewsRule, optionIgnore, optionMaxWarning, optionMisprint, optionEmptyKey, deepSearch,
-                    optionMisprintCoefficient, optionIgnoredKeys, optionIgnoredMisprintKeys, optionCustomRegExpToFindKeys, tsConfigPath
+                    optionViewsRule, optionIgnore, optionMaxWarning, optionEmptyKey, deepSearch,
+                    optionIgnoredKeys, optionCustomRegExpToFindKeys, tsConfigPath
                 );
             } else {
                 const cliHasError: boolean = this.validate();
@@ -170,25 +161,19 @@ class Cli {
         views?: ErrorTypes,
         ignore?: string,
         maxWarning: number = 1,
-        misprint?: ErrorTypes,
         emptyKeys?: ErrorTypes,
         deepSearch?: ToggleRule,
-        misprintCoefficient: number = 0.9,
         ignoredKeys: string[] = [],
-        ignoredMisprintKeys: string[] = [],
         customRegExpToFindKeys: string[] | RegExp[] = [],
         tsConfigPath?: string,
     ): void {
             const errorConfig: IRulesConfig = {
-                misprintKeys: misprint || ErrorTypes.disable,
                 deepSearch: deepSearch || ToggleRule.disable,
                 zombieKeys: zombies || ErrorTypes.warning,
                 emptyKeys: emptyKeys || ErrorTypes.warning,
                 keysOnViews: views || ErrorTypes.error,
                 maxWarning,
                 ignoredKeys,
-                ignoredMisprintKeys,
-                misprintCoefficient,
                 customRegExpToFindKeys,
             };
             const validationModel: ReactI18nextLint = new ReactI18nextLint(project, languages, ignore, errorConfig, tsConfigPath);

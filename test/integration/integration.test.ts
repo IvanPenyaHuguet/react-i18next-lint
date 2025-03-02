@@ -90,77 +90,7 @@ describe('Core Integration', () => {
             assert.deepEqual(countEmptyKeys, result.countEmptyKeys());
         });
     });
-    describe('Misprint', () => {
-        it('should be disable by default', () => {
-            // Arrange
-            const hasMisprint: boolean = false;
-            const countMisprint: number = 0;
 
-            // Act
-            const model: ReactI18nextLint = new ReactI18nextLint(projectWithMaskPath, languagesWithMaskPath);
-            const result: ResultCliModel = model.lint();
-
-            // Assert
-            assert.deepEqual(hasMisprint, result.hasMisprint());
-            assert.deepEqual(countMisprint, result.countMisprint());
-        });
-        it('should be error', () => {
-            // Arrange
-            const errorConfig: IRulesConfig = {
-                keysOnViews: ErrorTypes.error,
-                zombieKeys: ErrorTypes.warning,
-                misprintKeys:  ErrorTypes.error,
-                deepSearch: ToggleRule.enable,
-                emptyKeys: ErrorTypes.warning,
-                maxWarning: 1,
-                misprintCoefficient: 0.9,
-                ignoredKeys: ["IGNORED.KEY.FLAG"],
-                ignoredMisprintKeys: [],
-                customRegExpToFindKeys: []
-            };
-            const hasMisprint: boolean = true;
-            const countMisprint: number = 1;
-            const correctError: ResultErrorModel = new ResultErrorModel(
-                'STRING.KEY_FROM_PIPE_VIEW.MISPRINT_IN_ONE_LOCALES',
-                    ErrorFlow.misprintKeys, ErrorTypes.error,
-                    getAbsolutePath(projectFolder, 'pipe.keys.html'),
-                    [
-                        'EN-eu.json',
-                        'EN-us.json'
-                    ],
-                    [
-                        "STRING.KEY_FROM_PIPE_VIEW.MISPRINT_IN_IN_LOCALES"
-                    ]
-            );
-
-            // Act
-            const model: ReactI18nextLint = new ReactI18nextLint(projectWithMaskPath, languagesWithMaskPath,  '', errorConfig);
-            const result: ResultCliModel = model.lint();
-            const clearErrors: ResultErrorModel[] = result.errors.filter((error: ResultErrorModel) => error.errorFlow === ErrorFlow.misprintKeys);
-
-            // Assert
-            assert.deepEqual(hasMisprint, result.hasMisprint());
-            assert.deepEqual(countMisprint, result.countMisprint());
-            assert.deepEqual(correctError, clearErrors.pop());
-        });
-        it('should be have 2 or more suggestions for one key', () => {
-            // Arrange
-            const hasMisprint: boolean = true;
-            const countMisprint: number = 2;
-            const ignorePath: string = `${languagesIgnorePath}, ${projectIgnorePath}`;
-            const errorConfig: IRulesConfig = {
-                ...defaultConfig.defaultValues.rules,
-                misprintKeys:  ErrorTypes.warning,
-            };
-            // Act
-            const model: ReactI18nextLint = new ReactI18nextLint(projectWithMaskPath, languagesWithMaskPath, ignorePath, errorConfig);
-            const result: ResultCliModel = model.lint();
-
-            // Assert
-            assert.deepEqual(hasMisprint, result.hasMisprint());
-            assert.deepEqual(countMisprint, result.countMisprint());
-        });
-    });
     describe('Warnings', () => {
         it('should be 0 by default', () => {
             // Act
@@ -180,11 +110,8 @@ describe('Core Integration', () => {
                 zombieKeys: ErrorTypes.warning,
                 emptyKeys: ErrorTypes.warning,
                 maxWarning: 1,
-                misprintCoefficient: 0.9,
-                misprintKeys: ErrorTypes.disable,
                 deepSearch: ToggleRule.enable,
                 ignoredKeys: ["IGNORED.KEY.FLAG"],
-                ignoredMisprintKeys: [],
                 customRegExpToFindKeys: []
             };
 
@@ -217,8 +144,7 @@ describe('Core Integration', () => {
             const ignorePath: string = `${languagesIgnorePath}, ${ignoreAbsoluteProjectPath}`;
             const errorConfig: IRulesConfig = {
                 ...defaultConfig.defaultValues.rules,
-                deepSearch: ToggleRule.enable,
-                misprintKeys: ErrorTypes.warning
+                deepSearch: ToggleRule.enable
             };
 
             // Act
@@ -259,8 +185,7 @@ describe('Core Integration', () => {
             const ignorePath: string = `${languagesIgnorePath}, ${projectIgnorePath}, ${languagesIncorrectFile}`;
             const errorConfig: IRulesConfig = {
                 ...defaultConfig.defaultValues.rules,
-                deepSearch: ToggleRule.enable,
-                misprintKeys: ErrorTypes.warning
+                deepSearch: ToggleRule.enable
             };
             // Act
             const model: ReactI18nextLint = new ReactI18nextLint(projectAbsentMaskPath, languagesAbsentMaskPath, ignorePath, errorConfig);
@@ -324,11 +249,8 @@ describe('Core Integration', () => {
                 zombieKeys: ErrorTypes.disable,
                 emptyKeys: ErrorTypes.warning,
                 maxWarning: 1,
-                misprintCoefficient: 0.9,
-                misprintKeys: ErrorTypes.disable,
                 deepSearch: ToggleRule.enable,
                 ignoredKeys: ["IGNORED.KEY.FLAG"],
-                ignoredMisprintKeys: [],
                 customRegExpToFindKeys: []
             };
 
@@ -373,11 +295,8 @@ describe('Core Integration', () => {
             zombieKeys: ErrorTypes.warning,
             emptyKeys: ErrorTypes.warning,
             maxWarning: 1,
-            misprintCoefficient: 0.9,
-            misprintKeys: ErrorTypes.warning,
             deepSearch: ToggleRule.enable,
             ignoredKeys: ["IGNORED.KEY.FLAG"],
-            ignoredMisprintKeys: [],
             customRegExpToFindKeys: []
         };
         const absolutePathProject: string = path.resolve(__dirname, process.cwd(), projectWithMaskPath);

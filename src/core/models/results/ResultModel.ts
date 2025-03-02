@@ -50,10 +50,9 @@ class ResultModel extends StylishLogger {
             const emptyKeys: ResultErrorModel[] = this.cli.errors.filter((x) => x.errorFlow === ErrorFlow.emptyKeys);
             const zombieKeys: ResultErrorModel[] = this.cli.errors.filter((x) => x.errorFlow === ErrorFlow.zombieKeys);
             const keysOnViews: ResultErrorModel[] = this.cli.errors.filter((x) => x.errorFlow === ErrorFlow.keysOnViews);
-            const misprintKeys: ResultErrorModel[] = this.cli.errors.filter((x) => x.errorFlow === ErrorFlow.misprintKeys);
 
             this.printMessage(`\nFind following errors:`, totalErrorType);
-            
+
             if (emptyKeys.length !== 0) {
                 const errorType:ErrorTypes = this.cli.isFullOfWarning() ? ErrorTypes.error : emptyKeys[0].errorType;
                 this.printMessage(`Empty Keys: \t ${emptyKeys.length}`,errorType);
@@ -67,12 +66,6 @@ class ResultModel extends StylishLogger {
             if (keysOnViews.length !== 0) {
                 const errorType:ErrorTypes = this.cli.isFullOfWarning() ? ErrorTypes.error : keysOnViews[0].errorType;
                 this.printMessage(`Key On Views: \t ${keysOnViews.length}`, errorType);
-            }
-
-
-            if (misprintKeys.length !== 0) {
-                const errorType:ErrorTypes = this.cli.isFullOfWarning() ? ErrorTypes.error : misprintKeys[0].errorType;
-                this.printMessage(`Misprint Keys: \t ${misprintKeys.length}`, errorType);
             }
 
 
