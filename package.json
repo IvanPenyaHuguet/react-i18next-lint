@@ -1,13 +1,13 @@
 {
     "author": "Raman Lauryniuk <romanrostislavovich@gmail.com>",
-    "name": "react-i18next-lint",
-    "version": "1.0.4",
+    "name": "react-i18next-translation-checker",
+    "version": "2.0.0",
     "description": "Simple tools for check `react-i18next` keys in app",
     "license": "MIT",
-    "repository": "svoboda-rabstvo/react-i18next-lint",
-    "bugs": "https://github.com/svoboda-rabstvo/react-i18next-lint/issues",
+    "repository": "IvanPenyaHuguet/react-i18next-translation-checker",
+    "bugs": "https://github.com/IvanPenyaHuguet/react-i18next-translation-checker/issues",
     "bin": {
-        "react-i18next-lint": "dist/bin.js"
+        "react-i18next-translation-checker": "dist/bin.js"
     },
     "types": "dist/src/core/index.d.ts",
     "main": "dist/src/core/index.js",
@@ -25,7 +25,7 @@
         "test:integration": "mocha -r ts-node/register ./test/integration/*.test.ts",
         "pre:release": "npm run lint && npm run build",
         "semantic-release": "",
-        "self-lint": "npx react-i18next-lint -p ./test/integration/inputs/views/*.{html,ts,js} -l ./test/integration/inputs/locales/*.json -i ./test/integration/inputs/locales/incorrect.json"
+        "self-lint": "npx react-i18next-translation-checker -p ./test/integration/inputs/views/*.{html,ts,js} -l ./test/integration/inputs/locales/*.json -i ./test/integration/inputs/locales/incorrect.json"
     },
     "files": [
         "dist/",

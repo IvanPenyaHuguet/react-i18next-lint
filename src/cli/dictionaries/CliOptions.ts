@@ -150,7 +150,7 @@ const cliOptions: OptionModel[] = [
         longName: OptionsLongNames.version,
         shortName: OptionsShortNames.version,
         required: false,
-        description: 'Print current version of react-i18next-lint',
+        description: 'Print current version of react-i18next-translation-checker',
         type: ArgumentTypes.undefined,
         additionalDescription: '',
     }),

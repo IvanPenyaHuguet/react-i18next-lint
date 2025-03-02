@@ -18,7 +18,7 @@ import { OptionsLongNames } from './enums';
 import chalk from 'chalk';
 import { parseJsonFile, getPackageJsonPath } from './utils';
 
-const name: string = 'react-i18next-lint';
+const name: string = 'react-i18next-translation-checker';
 
 // tslint:disable-next-line:no-any
 const docs: any = {

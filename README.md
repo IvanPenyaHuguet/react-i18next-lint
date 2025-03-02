@@ -1,11 +1,14 @@
-# react-i18next-lint
+# react-i18next-translation-checker
 
 > Simple tools for check `react-i18next` keys in whole app which use regexp.
 
 [![semantic](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![npm](https://img.shields.io/npm/v/react-i18next-lint.svg)](https://www.npmjs.com/package/react-i18next-lint)
-[![download npm](https://img.shields.io/npm/dm/react-i18next-lint.svg)](https://www.npmjs.com/package/react-i18next-lint)
+[![npm](https://img.shields.io/npm/v/react-i18next-translation-checker.svg)](https://www.npmjs.com/package/react-i18next-translation-checker)
+[![download npm](https://img.shields.io/npm/dm/react-i18next-translation-checker.svg)](https://www.npmjs.com/package/react-i18next-translation-checker)
 
+> Fork of https://github.com/romanrostislavovich/react-i18next-lint, we are thank you for their work in creating this package.
+> Updated dependencies, no other change
+>
 > for `react-intl` use [`react-intl-lint`](https://www.npmjs.com/package/react-intl-lint)
 >
 > for `ngx-translate` use [`ngx-translate-lint`](https://www.npmjs.com/package/ngx-translate-lint)
@@ -13,14 +16,21 @@
 
 ## Table of Contents
 
-- [Background](#background)
-- [Installation](#installation)
-- [Usage](#usage)
+- [react-i18next-translation-checker](#react-i18next-translation-checker)
+  - [Table of Contents](#table-of-contents)
+  - [Background](#background)
+  - [Installation](#installation)
+    - [NPM](#npm)
+    - [GitHub](#github)
+  - [Usage](#usage)
     - [CLI](#cli)
-    - [TypeScript](#TypeScript)
-- [Contribute](#contribute)
-- [Used By](#UsedBy)
-- [License](#license)
+      - [How to write Custom RegExp](#how-to-write-custom-regexp)
+      - [Exit Codes](#exit-codes)
+    - [TypeScript](#typescript)
+      - [NOTE!](#note)
+  - [Contribute](#contribute)
+  - [Used By](#used-by)
+  - [License](#license)
 
 ## Background
 
@@ -33,7 +43,7 @@ which should exist in all languages files.
 ### NPM
 
 ```bash
-npm install react-i18next-lint -g
+npm install react-i18next-translation-checker -g
 ```
 
 ### GitHub
@@ -48,7 +58,7 @@ at [GitHub Releases][github-release-url] and
 
 ```text
 
-Usage: react-i18next-lint [options]
+Usage: react-i18next-translation-checker [options]
 
 Simple CLI tools for check `react-i18next` keys in app
 
@@ -101,9 +111,9 @@ Options:
 
 Examples:
 
-    $ npx react-i18next-lint  -p ./src/app/**/*.{html,ts,js} -l ./src/assets/i18n/*.json
-    $ react-i18next-lint -p ./src/app/**/*.{html,ts,js} -l ./src/assets/i18n/*.json
-    $ react-i18next-lint -p ./src/app/**/*.{html,ts,js} -z disable -v error
+    $ npx react-i18next-translation-checker  -p ./src/app/**/*.{html,ts,js} -l ./src/assets/i18n/*.json
+    $ react-i18next-translation-checker -p ./src/app/**/*.{html,ts,js} -l ./src/assets/i18n/*.json
+    $ react-i18next-translation-checker -p ./src/app/**/*.{html,ts,js} -z disable -v error
 ```
 
 > NOTE: For `project` and `languages` options need to include file types like on the example.
@@ -138,7 +148,7 @@ We have `(?<=marker\\(['\"])([A-Za-z0-9_\\-.]+)(?=['\"]\\))` RegExp witch contai
    - start with `(?<=` and end `)`.
    - `marker\\(['\"]` - tells that we try to find word `market` witch have on the second character `'`or `"`
    - To summarize, we are trying to find keys before each word to be `market` and commas `'` or `"`
-  
+
 - Matching for key: `([A-Za-z0-9_\\-.]+)`
   - This construction tells that we find and save all words which contain alphabet, numbers, and `_` or `-`.
   - We recommend using this part of RegExp to find and save translated keys
@@ -164,7 +174,7 @@ The CLI process may exit with the following codes:
 ### TypeScript
 
 ```typescript
-import { ToggleRule, ReactI18nextLint, IRulesConfig, ResultCliModel, ErrorTypes, LanguagesModel } from 'react-i18next-lint';
+import { ToggleRule, ReactI18nextLint, IRulesConfig, ResultCliModel, ErrorTypes, LanguagesModel } from 'react-i18next-translation-checker';
 
 const viewsPath: string = './src/app/**/*.{html,ts,js}';
 const languagesPath: string = './src/assets/i18n/*.json';
@@ -215,16 +225,16 @@ Here can be your extensions
 [react-i18next]: https://react.i18next.com/
 [semantic-shield]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
-[npm-shield]: https://img.shields.io/npm/v/svoboda-rabstvo/react-i18next-lint.svg
-[npm-url]: https://www.npmjs.com/package/react-i18next-lint
+[npm-shield]: https://img.shields.io/npm/v/svoboda-rabstvo/react-i18next-translation-checker.svg
+[npm-url]: https://www.npmjs.com/package/react-i18next-translation-checker
 [npm]: https://www.npmjs.com
 [node-js]: https://nodejs.org
-[github-shield]: https://img.shields.io/github/release/svoboda-rabstvo/react-i18next-lint.svg?label=github
-[github-url]: https://github.com/svoboda-rabstvo/react-i18next-lint
-[github-release-url]: https://github.com/svoboda-rabstvo/react-i18next-lint/releases
-[github-pages-url]: https://svoboda-rabstvo.github.io/react-i18next-lint/
+[github-shield]: https://img.shields.io/github/release/svoboda-rabstvo/react-i18next-translation-checker.svg?label=github
+[github-url]: https://github.com/svoboda-rabstvo/react-i18next-translation-checker
+[github-release-url]: https://github.com/svoboda-rabstvo/react-i18next-translation-checker/releases
+[github-pages-url]: https://svoboda-rabstvo.github.io/react-i18next-translation-checker/
 [schema-url]: http://json-schema.org/
-[doc-url]: https://github.com/svoboda-rabstvo/react-i18next-lint/blob/develop/doc
-[license-url]: https://github.com/svoboda-rabstvo/react-i18next-lint/blob/develop/LICENSE.md
+[doc-url]: https://github.com/svoboda-rabstvo/react-i18next-translation-checker/blob/develop/doc
+[license-url]: https://github.com/svoboda-rabstvo/react-i18next-translation-checker/blob/develop/LICENSE.md
 [meta-url]: https://en.wikipedia.org/wiki/List_of_software_package_management_systems#Meta_package_managers
-[contributing]: https://github.com/svoboda-rabstvo/react-i18next-lint/blob/develop/.github/CONTRIBUTING.md
+[contributing]: https://github.com/svoboda-rabstvo/react-i18next-translation-checker/blob/develop/.github/CONTRIBUTING.md
