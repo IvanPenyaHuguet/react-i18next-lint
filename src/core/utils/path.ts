@@ -5,7 +5,7 @@ import { concat } from 'lodash';
 
 class PathUtils {
     public static resolvePath(filePath: string): string {
-        return path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath);
+        return (path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath)).split(path.sep).join('/');
     }
 
     public static getNormalizeFiles(folder: string, ignores: string[] = []): string[] {
